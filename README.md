@@ -21,10 +21,9 @@ Features
 How to install
 --------------
 
-Clone the source code and run 'setup.py':
+You can install via pip:
 
-    $ python setup.py install
-
+    $ pip install TinyFastSS
 
 Basic usage
 -----------
@@ -48,6 +47,22 @@ with fastss.open('fastss.dat') as index:
     # return a dict like: {0: ['test'], 1: ['text', 'west'], 2: ['taft']}
     print(index.query('test'))
 ```
+
+Command-line usage
+------------------
+
+You can also use fastss.py from the command line.
+Here is a bare minimum example:
+
+    $ cat dictionary.txt | head -n 3
+    aardvark
+    abacus
+    aerial
+    $ python -m fastss -c index.dat dictionary.txt
+    $ python -m fastss -q index.dat adaptive
+    {"0": ["adaptive"], "1": ["adoptive"], "2": ["additive"]}
+
+Invoke "python -m fastss -h" for more details.
 
 Performance
 -----------
@@ -106,3 +121,9 @@ and each word-list is serialized into a byte string delimited by null
 bytes (b'\x00'). Here is an example of a (key, value) pair:
 
     (b'almond', b'almond\x00almonds\x00almondy')
+
+
+License
+-------
+
+MIT License (see LICENSE for details)
